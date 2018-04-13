@@ -1,0 +1,141 @@
+sensor.alarm_level:
+  hidden: true
+sensor.alarm_type:
+  hidden: true
+sensor.fibaro_system_fgd212_dimmer_2_heat:
+  hidden: true
+sensor.fibaro_system_fgd212_dimmer_2_power_2:
+  icon: mdi:gauge
+sensor.fibaro_system_fgd212_dimmer_2_power:
+  hidden: true
+sensor.fibaro_system_fgd212_dimmer_2_power_management:
+  hidden: true
+sensor.fibaro_system_fgd212_dimmer_2_sourcenodeid:
+  hidden: true
+sensor.fibaro_system_fgd212_dimmer_2_system:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_exporting:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_exporting_2:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_exporting_3:
+  hidden: true
+sensor.fibaro_system_fgd212_dimmer_2_exporting:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_power_4:
+  icon: mdi:gauge
+sensor.fibaro_system_fgwpef_wall_plug_power:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_power_2:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_power_3:
+  hidden: true
+sensor.187_humidity:
+  friendly_name: Hjemmekino humidity
+sensor.187_temperature:
+  friendly_name: Hjemmekino
+sensor.125_humidity:
+  friendly_name: Gjesterom humidity
+sensor.125_temperature:
+  friendly_name: Gjesterom
+sensor.netatmo_stuen_wifi:
+  hidden: true
+zwave.fibaro_system_fgwpef_wall_plug:
+  hidden: true
+zwave.fibaro_system_fgwpef_wall_plug_2:
+  hidden: true
+zwave.fibaro_system_fgwpef_wall_plug_3:
+  hidden: true
+zwave.fibaro_system_fgd212_dimmer_2:
+  hidden: true
+zwave.aeotec_zw090_zstick_gen5_eu:
+  hidden: true
+light.fibaro_system_fgd212_dimmer_2_level:
+  hidden: true
+light.soverom:
+  hidden: true
+light.stuen:
+  hidden: true
+light.nede:
+  hidden: true
+light.custom_group_for_lights:
+  hidden: true
+light.group_for_wakeup:
+  hidden: true
+sensor.unknown_2:
+  friendly_name: Stereo
+  icon: mdi:file-chart
+sensor.unknown_4:
+  friendly_name: VarmeBad
+  icon: mdi:file-chart
+sensor.unknown_3:
+  friendly_name: 3D Printer
+  icon: mdi:file-chart
+light.hjemmekino:
+  icon: mdi:lightbulb
+  assumed_state: false
+light.hjemmekontor:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.annehyllen:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.bildelys:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.garderobe:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.lampett:
+  icon: mdi:lightbulb
+  assumed_state: false
+switch.switch_3:
+  icon: mdi:lightbulb
+switch.switch_2:
+  icon: mdi:printer
+switch.switch:
+  icon: mdi:speaker
+sensor.elspot_kwh:
+  icon: mdi:finance
+alarm_control_panel.sector_alarm_01166457:
+  friendly_name: Sector Alarm
+sensor.fibaro_system_fgwpef_wall_plug_power_5:
+  icon: mdi:gauge
+sensor.fibaro_system_fgwpef_wall_plug_power_6:
+  icon: mdi:gauge
+sensor.unknown:
+  icon: mdi:file-chart
+zwave._:
+  hidden: true
+sensor.fibaro_system_fgms001_motion_sensor_general:
+  hidden: true
+sensor.alarm_level_3:
+  hidden: true
+sensor.alarm_level_2:
+  hidden: true
+sensor.alarm_type_3:
+  hidden: true
+sensor.alarm_type_2:
+  hidden: true
+sensor.telldus_tzdw100_magnet_switch_burglar_2:
+  hidden: true
+sensor.telldus_tzdw100_magnet_switch_burglar:
+  hidden: true
+sensor.telldus_tzdw100_magnet_switch_sourcenodeid_2:
+  hidden: true
+sensor.telldus_tzdw100_magnet_switch_sourcenodeid:
+  hidden: true
+sensor.thermofloor_as_heatit_thermostat_tf_021_exporting:
+  hidden: true
+zwave.__5:
+  hidden: true
+zwave.__4:
+  hidden: true
+zwave.__3:
+  hidden: true
+zwave.__2:
+  hidden: true
+zwave.thermofloor_as_heatit_thermostat_tf_021:
+  hidden: true
+climate.thermofloor_as_heatit_thermostat_tf_021_energy_heat:
+  friendly_name: ThermoFloor2

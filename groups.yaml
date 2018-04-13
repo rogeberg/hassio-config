@@ -1,0 +1,142 @@
+##groups
+
+all_devices:
+  name: Alle enheter
+  entities:
+
+stuen:
+  name: Stuen
+  entities:
+    - light.skatollet
+    - switch.annehyllen
+    - switch.bildelys
+    - switch.lampett
+    - light.konglen
+
+gangogsov:
+  name: Gang, bad og soverom
+  entities:
+    - light.level
+    - light.hoved_soverom
+    - switch.garderobe
+    - light.evas_rom
+    - switch.switch_3
+
+underetasjen:
+  name: Underetasjen
+  entities:
+    - light.hue_iris
+    - light.hjemmekino
+    - light.hjemmekontor
+    - light.lampe
+    - climate.thermofloor_as_heatit_thermostat_tf_021_heating
+    - climate.thermofloor_as_heatit_thermostat_tf_021_energy_heat
+
+lydogbilde:
+  name: LydogBilde
+  entities:
+    - switch.switch
+    - switch.switch_4
+    - media_player.stuen
+    - media_player.kjkken
+    - media_player.familiestue
+
+hagen:
+  name: Hagen
+  entities:
+#    - sun.sun
+#    - sensor.yr_symbol
+    - sensor.netatmo_ostveggen_battery
+    - sensor.netatmo_ostveggen_humidity
+    - sensor.netatmo_ostveggen_radio
+    - sensor.netatmo_ostveggen_temperature
+
+klima:
+  name: Klima
+  entities:
+    - sensor.netatmo_stuen_co2
+    - sensor.netatmo_stuen_humidity
+    - sensor.netatmo_stuen_noise
+    - sensor.netatmo_stuen_pressure
+    - sensor.netatmo_stuen_temperature
+    - sensor.netatmo_stuen_wifi
+    - sensor.125_humidity
+    - sensor.125_temperature
+    - sensor.187_humidity
+    - sensor.187_temperature
+    - sensor.233_humidity
+    - sensor.233_temperature
+    - sensor.thermofloor_as_heatit_thermostat_tf_021_temperature
+    - sensor.fibaro_system_fgms001_motion_sensor_temperature
+    - sensor.fibaro_system_fgms001_motion_sensor_luminance
+
+sensorer:
+  name: Magneter
+  entities:
+    - binary_sensor.sensor
+    - binary_sensor.sensor_2
+    - binary_sensor.sensor_3
+
+octoprint:
+  name: OctoPrint
+  entities:
+    - switch.switch_2
+    - sensor.octoprint_current_state
+    - sensor.octoprint_job_percentage
+    - sensor.octoprint_actual_bed_temp
+    - sensor.octoprint_target_bed_temp
+    - sensor.octoprint_actual_tool0_temp
+    - sensor.octoprint_target_tool0_temp
+
+energi:
+  name: Energi
+  entities:
+    - sensor.elspot_kwh
+    - sensor.fibaro_system_fgd212_dimmer_2_power_2
+    - sensor.fibaro_system_fgwpef_wall_plug_power_4
+    - sensor.fibaro_system_fgwpef_wall_plug_power_5
+    - sensor.fibaro_system_fgwpef_wall_plug_power_6
+    - sensor.unknown
+    - sensor.unknown_2
+    - sensor.unknown_3
+    - sensor.unknown_4
+    - sensor.thermofloor_as_heatit_thermostat_tf_021_unknown
+
+  #VIEWS
+Rooms_view:
+  view: yes
+  name: Rooms
+  icon: mdi:lightbulb
+  entities:
+    - group.stuen
+    - group.underetasjen
+    - group.gangogsov
+
+Entertainment_view:
+  view: yes
+  name: Entertainment
+  icon: mdi:speaker
+  entities:
+    - group.lydogbilde
+
+Octo_view:
+  view: yes
+  name: Octoprint
+  icon: mdi:printer
+  entities:
+    - group.octoprint
+
+Climate_view:
+  view: yes
+  name: Climate
+  icon: mdi:cloud
+  entities:
+    - group.klima
+    - group.hagen
+
+Energy_view:
+  view: yes
+  name: Energy
+  icon: mdi:gauge
+  entities:
+    - group.energi

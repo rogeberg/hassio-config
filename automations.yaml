@@ -1,0 +1,160 @@
+#automations
+# Prefix the first line of each trigger configuration with a '-' to enter multiple
+# With a single service call, we don't need a '-' before service - though you can if you want to
+
+#scenarie for å starte dagen
+- alias: 'Bra morgen'
+  trigger:
+    platform: time
+    at: '07:00'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.underetasjen
+    - service: homeassistant.turn_on
+      entity_id: group.gangogsov
+    - service: homeassistant.turn_on
+      entity_id: light.skatollet
+    - service: homeassistant.turn_on
+      entity_id: switch.bildelys
+    - service: light.turn_on
+      entity_id: light.level
+      data:
+        brightness: 40
+
+#scenarie der folk er hjemme og solen er gått ned
+- alias: 'Ettermiddag, er hjemme'
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-02:00:00'
+    - platform: state
+      entity_id: alarm_control_panel.sector_alarm_01166457
+      to: 'disarmed'
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.sector_alarm_01166457
+      state: 'disarmed'
+    - condition: time
+      after: '14:00:00'
+      before: '22:59:00'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.underetasjen
+      data:
+        brightness: 90
+    - service: homeassistant.turn_on
+      entity_id: group.stuen
+    - service: light.turn_on
+      entity_id: light.level
+      data:
+        brightness: 25
+
+#scenarie der folk ikke er hjemme og solen er gått ned
+- alias: 'Ettermiddag, stille i huset'
+  hide_entity: True
+  trigger:
+    - platform: sun
+      event: sunset
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.sector_alarm_01166457
+      state: 'armed_away'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.stuen
+    - service: light.turn_on
+      entity_id: light.level
+      data:
+        brightness: 15
+
+# scenarie for stille i huset
+- alias: 'Natt og dag'
+  trigger:
+    - platform: time
+      at: '08:30'
+    - platform: time
+      at: '23:00'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.underetasjen
+    - service: homeassistant.turn_off
+      entity_id: group.stuen
+    - service: homeassistant.turn_off
+      entity_id: group.gangogsov
+    - service: light.turn_on
+      entity_id: light.level
+      data:
+        brightness: 15
+
+#varsler når det er bevegelse på hjemmekontor og alarmen er på
+- alias: 'Alarm på og bevegelse, varsling'
+  hide_entity: True
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.sensor
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.sector_alarm_01166457
+      state: 'armed_home'
+  action:
+    - service: light.turn_on
+      entity_id: light.hue_iris
+      data:
+        brightness: 80
+        rgb_color: [255, 0, 0]
+    - service: notify.pushover
+      data:
+        title: "Bevegelse på hjemmekontor"
+        message: "Alarm på, bevegelse på hjemmekontor"
+        data:
+#        url: "https://www.home-assistant.io/"
+#        sound: pianobar
+          priority: 0
+
+#varsler når ny device legges til
+- alias: 'Ny enhet'
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: device_tracker_new_device
+#  condition:
+  action:
+    - service: notify.pushover
+      data_template:
+        title: Ny enhet på nettverket
+        message: >
+              Ny enhet:
+              {{trigger.event.data.host_name}}
+              ({{trigger.event.data.entity_id}})
+
+  #varsler når ny magnetsensor1 trigges
+- alias: 'Magnetsensor1'
+  hide_entity: True
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.sensor_2
+    to: 'on'
+  #  condition:
+  action:
+    - service: notify.pushover
+      data_template:
+        title: Magnetsensor 1 er åpnet
+        message: >
+              Ny enhet:
+
+
+  #varsler når ny magnetsensor1 trigges
+- alias: 'Magnetsensor2'
+  hide_entity: True
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.sensor_3
+    to: 'on'
+  #  condition:
+  action:
+    - service: notify.pushover
+      data_template:
+        title: Magnetsensor 2 er åpnet
+        message: >
+              Ny enhet:

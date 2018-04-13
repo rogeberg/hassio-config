@@ -1,0 +1,128 @@
+homeassistant:
+
+  name: !secret hassio_name
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 30
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Oslo
+
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+sensor:
+  - platform: yr
+  - platform: tellstick
+  - platform: nordpool
+    currency: 'NOK'
+    region: 'Oslo'
+    name: "Elspot kWh"
+  - platform: octoprint
+    name: OctoPrint
+    monitored_conditions:
+      - Current State
+      - Temperatures
+      - Job Percentage
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+# cloud:
+
+#checking precense on wifi devices connected to my router
+device_tracker:
+  - platform: asuswrt
+    host: !secret asuswrt_host
+    username: !secret asuswrt_username
+    password: !secret asuswrt_password
+    new_device_defaults:
+      track_new_devices: True
+      hide_if_away: True
+
+#netatmo integration
+netatmo:
+  api_key: !secret netatmo_api_key
+  secret_key: !secret netatmo_secret_key
+  username: !secret netatmo_username
+  password: !secret netatmo_password
+
+#connects a tellstick duo on raspberry pies usb so I can use 433Mhz devices
+tellstick:
+    signal_repetitions: 3
+    host: core-tellstick
+    port: [50800, 50801]
+
+#connects an aeonstick on raspberry pies usb so I can use zwave devices
+zwave:
+    usb_path: /dev/ttyACM0
+
+#status on my 3d printer
+octoprint:
+  host: 192.168.1.104
+  api_key: !secret octoprint_api_key
+  bed: true
+  number_of_tools: 1
+
+#using pushover to send alerts and messages
+notify:
+  - name: pushover
+    platform: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
+
+#integration with my security provider
+sector_alarm:
+  email: !secret sector_email
+  password: !secret sector_password
+  alarm_id: !secret sector_alarm_id
+  code: !secret sector_code
+  thermometers: false
+  alarm_panel: true
+
+#camera on 3dprinter
+camera:
+  - platform: mjpeg
+    mjpeg_url: http://192.168.1.104/webcam/?action=stream
+#    image_rotation: 180
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
