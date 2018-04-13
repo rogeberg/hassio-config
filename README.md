@@ -35,7 +35,6 @@ Some of the devices and services that I use with HA:
         Netatmo weathersensors indoor and outdoor
         Oregon weathersensors around the house
         YR weather data and forecasts
-        Pollen sensor for allergy related information
         
      Other external stuff I connect to:
         Noorpool in order to get the current power prices in my city
