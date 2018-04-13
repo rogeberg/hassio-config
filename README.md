@@ -3,7 +3,7 @@ This is my Home Assistant configuration. I run this on a Raspberry Pie 3 with a 
 
 I regularly update my configuration files. You can check my current HA version here. 
 
-Some of the devices and services that I use with HA
+Some of the devices and services that I use with HA:
 
     Aeotec Z-Stick Gen5 for Z-Wave control
 
